@@ -45,6 +45,7 @@ bot.on("contact", (ctx) => {
 		Chat_Id: ctx.update.message.chat.id,
 		phone_number: ctx.update.message.contact.phone_number,
 	};
+
 	const api_url = process.env.API_URL;
 	var options = {
 		uri: api_url,
@@ -195,7 +196,7 @@ bot.action(/.+/, (ctx) => {
 			console.log(error);
 		} else {
 			console.log(response.body);
-			return ctx.reply(`${ctx.match[0]} is your prayer date`);
+			return ctx.reply(`${ctx.match[0]}`);
 		}
 	});
 });
