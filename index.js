@@ -184,7 +184,7 @@ bot.action(/.+/, (ctx) => {
 	let prefferedDate = {
 		prayerDate: ctx.match[0],
 	};
-	const api_url = process.env.API_URL;
+	const api_url = 3000;
 	var options = {
 		uri: api_url,
 		method: "POST",

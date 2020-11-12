@@ -2,8 +2,17 @@ const express = require("express");
 const request = require("request");
 const telgramMessager = require("./Routes/messagesRoutes");
 const cors = require("cors");
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const app = express();
+
+mongoose.connect('mongodb://localhost/ride', {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.Promise = global.Promise;
+
+mongoose.connection.on('error', (err) => {
+    console.log(err.message);
+    process.exit(1);
+});
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -15,4 +24,4 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.listen(process.env.PORT || 3000, function () {});
+app.listen(3000, function() {});
